@@ -14,7 +14,10 @@
         .headline { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 15px; line-height: 1.2; text-transform: uppercase; }
         .sub-headline { font-size: 14px; color: var(--primary); font-weight: 700; margin-bottom: 20px; }
         .video-container { position: relative; background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border); width: 100%; }
-        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); }
+        .video-container.sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; margin: 0; border-radius: 0; max-width: 100%; }
+        .video-placeholder { display: none; }
+        .video-placeholder.show { display: block; padding-bottom: 56.25%; }
+        .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); position: sticky; bottom: 0; z-index: 999; }
         .btn-next:hover { transform: scale(1.02); }
         .screen { display: none; }
         .screen.active { display: block; }
@@ -51,11 +54,19 @@
             <div class="fixed-header">PROTOCOLO TRIPE - REVELADO</div>
             <h1 class="headline">O SEGREDO DOS ATORES PÔRNO PARA ATIVAR O CRESCIMENTO DO PÊNIS EM 45 DIAS.</h1>
             <p class="sub-headline">Assista ao vídeo abaixo para liberar sua 👇avaliação gratuita👇</p>
-            <div class="video-container">
-                <script src="https://fast.wistia.com/player.js" async></script>
-                <script src="https://fast.wistia.com/embed/q600dov5tx.js" async type="module"></script>
-                <style>wistia-player[media-id='q600dov5tx']:not(:defined ) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/q600dov5tx/swatch' ); display: block; filter: blur(5px); padding-top:178.06%; }</style> 
-                <wistia-player media-id="q600dov5tx" aspect="0.5616224648985959"></wistia-player>
+            <div class="video-placeholder"></div>
+            <div class="video-container" id="video-container">
+              <script src="https://fast.wistia.com/embed/medias/kf6oec0viz.jsonp" async></script>
+              <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+              <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                  <div class="wistia_embed wistia_async_kf6oec0viz videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                      <img src="https://fast.wistia.com/embed/medias/kf6oec0viz/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <button id="vsl-button" class="btn-next" onclick="next()">REVELAR O SEGREDO</button>
         </div>
@@ -67,15 +78,15 @@
             <div class="urgency-badge"><span id="online-count-val">147</span> HOMENS ONLINE AGORA</div>
             <div class="carousel" id="authority-carousel">
                 <div class="slide active">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/55db78_0079baf30d6c485581fa2291d62c7d25_mv2.jpg">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/02-.jpg" alt="Paciente M. Souza">
                     <div class="slide-caption">PACIENTE M. SOUZA: +5.8cm (VALIDADO )</div>
                 </div>
                 <div class="slide">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/154c4e_580c204a6f9b42caa1d9e689de18d065_mv2.jpg">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/22109742.jpg" alt="Paciente R. Oliveira">
                     <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm (VALIDADO )</div>
                 </div>
                 <div class="slide">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/images.png">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudo Clínico">
                     <div class="slide-caption">ESTUDO CLÍNICO: EXPANSÃO TECIDUAL ATIVA</div>
                 </div>
             </div>
@@ -96,15 +107,15 @@
             <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">ANALISANDO DADOS BIOMÉTRICOS...</h2>
             <div class="carousel" id="depo-carousel">
                 <div class="slide active">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp" alt="Paciente H. Lima">
                     <div class="slide-caption">PACIENTE H. LIMA: +5.2cm (CONFIRMADO )</div>
                 </div>
                 <div class="slide">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/daf6ef_d639bfc5b0a34189b18c48e3f54f2763_mv2.png">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/02/daf6ef_d639bfc5b0a34189b18c48e3f54f2763_mv2-1.png" alt="Paciente A. Costa">
                     <div class="slide-caption">PACIENTE A. COSTA: +6.1cm (CONFIRMADO )</div>
                 </div>
                 <div class="slide">
-                    <img src="https://protocolotripe.online/wp-content/uploads/2026/01/Sample-photo-fotor-202601270541.png">
+                    <img src="https://metodotripe.shop/wp-content/uploads/2026/01/WhatsApp-Image-2024-12-18-at-15.11.46-rcl53qv1p0gr5s3fzr30gvvchnyybvpbhth13gqhj4.jpeg">
                     <div class="slide-caption">PACIENTE J. GOMES: +4.7cm (CONFIRMADO )</div>
                 </div>
             </div>
@@ -130,16 +141,16 @@
             <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 10px;">SEU PLANO PERSONALIZADO ESTÁ PRONTO!</h2>
             
             <div class="benefit-list">
-                <div class="benefit-item"><span>✓</span> AUMENTE O TAMANHO NATURALMENTE</div>
+                <div class="benefit-item"><span>✓</span> AUMENTE O TAMANHO E GROSSURA NATURALMENTE</div>
                 <div class="benefit-item"><span>✓</span> EREÇÕES MAIS DURADOURAS</div>
-                <div class="benefit-item"><span>✓</span> PRIMEIROS RESULTADOS EM SEMANAS</div>
-                <div class="benefit-item"><span>✓</span> SEM APARELHOS DOLOROSOS</div>
-                <div class="benefit-item"><span>✓</span> MELHORE O DESEMPENHO</div>
-                <div class="benefit-item"><span>✓</span> MAIOR SATISFAÇÃO SEXUAL</div>
+                <div class="benefit-item"><span>✓</span> PRIMEIROS RESULTADOS EM 45 DIAS</div>
+                <div class="benefit-item"><span>✓</span> SEM APARELHOS OU REMEDIOS</div>
+                <div class="benefit-item"><span>✓</span> FAÇA ELA GOZAR 3 VEZES POR NOITE</div>
+                <div class="benefit-item"><span>✓</span> DURE ATE 3 HORAS NA CAMA</div>
             </div>
 
             <div class="guarantee-box">
-                <img src="https://protocolotripe.online/wp-content/uploads/2026/01/images.png" class="guarantee-badge">
+                <img src="https://metodotripe.shop/wp-content/uploads/2026/02/7564b4c41b95c4d46ca0_-_94d8bd698ca2c759ce37_-_inserir-um-titulo.jpg" class="guarantee-badge">
                 <div class="guarantee-text">
                     <p style="font-weight: 900; color: #fff;">MÉTODO TRIPE</p>
                     <p style="font-weight: 900; color: #22c55e;">30 DIAS DE GARANTIA</p>
@@ -206,7 +217,7 @@
 
         window.finish = () => { 
             update(ref(db, 'sessions/'+sid), { status: 'checkout_clicked' }); 
-            window.location.href = `https://pay.wiapy.com/J4RuA1jmJ?utm_source=${sid}&external_id=${sid}`; 
+            window.location.href = `https://pay.wiapy.com/mm3kNpGy6Q?utm_source=${sid}&external_id=${sid}`; 
         };
 
         function render( ) {
@@ -262,6 +273,25 @@
 
         function init() { render(); set(ref(db, 'sessions/'+sid), { enteredAt: serverTimestamp(), status: 'vsl_viewed', currentStep: 0 }); }
         init();
+
+        // Controle de vídeo fixo e scroll
+        let videoFixed = false;
+        window.addEventListener('scroll', () => {
+            if (step !== 0) return;
+            const videoContainer = document.getElementById('video-container');
+            const placeholder = document.querySelector('.video-placeholder');
+            const rect = videoContainer.getBoundingClientRect();
+            
+            if (rect.top <= 0 && !videoFixed) {
+                videoFixed = true;
+                videoContainer.classList.add('sticky');
+                placeholder.classList.add('show');
+            } else if (window.scrollY === 0 && videoFixed) {
+                videoFixed = false;
+                videoContainer.classList.remove('sticky');
+                placeholder.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
