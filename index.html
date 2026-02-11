@@ -8,7 +8,7 @@
     <style>
         :root { --primary: #ef4444; --bg: #050505; --card: #111111; --text: #ffffff; --muted: #9ca3af; --border: #262626; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg ); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
         .quiz-card { width: 100%; max-width: 550px; background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); text-align: center; }
         .fixed-header { font-size: 10px; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
         .headline { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 15px; line-height: 1.2; text-transform: uppercase; }
@@ -19,6 +19,7 @@
         .video-placeholder.show { display: block; padding-bottom: 56.25%; }
         .btn-next { background: var(--primary); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 900; cursor: pointer; width: 100%; font-size: 20px; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); position: sticky; bottom: 0; z-index: 999; }
         .btn-next:hover { transform: scale(1.02); }
+        .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
         .screen { display: none; }
         .screen.active { display: block; }
         .progress-bar { height: 4px; background: var(--border); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
@@ -79,18 +80,18 @@
             <div class="carousel" id="authority-carousel">
                 <div class="slide active">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/02-.jpg" alt="Paciente M. Souza">
-                    <div class="slide-caption">PACIENTE M. SOUZA: +5.8cm (VALIDADO )</div>
+                    <div class="slide-caption">PACIENTE M. SOUZA: +5.8cm (VALIDADO ✓)</div>
                 </div>
                 <div class="slide">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/01/22109742.jpg" alt="Paciente R. Oliveira">
-                    <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm (VALIDADO )</div>
+                    <div class="slide-caption">PACIENTE R. OLIVEIRA: +4.9cm (VALIDADO ✓)</div>
                 </div>
                 <div class="slide">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/01/meaSaaTbaAaaaamhD_iLJzfk9u2QO-ZC1.jpg" alt="Estudo Clínico">
                     <div class="slide-caption">ESTUDO CLÍNICO: EXPANSÃO TECIDUAL ATIVA</div>
                 </div>
             </div>
-            <p style="color: var(--muted ); margin-bottom: 25px;" id="loading-text">Carregando avaliação gratuita...</p>
+            <p style="color: var(--muted); margin-bottom: 25px;" id="loading-text">Carregando avaliação gratuita...</p>
             <button class="btn-next" onclick="next()" id="start-quiz-btn" disabled>INICIAR AVALIAÇÃO AGORA</button>
         </div>
 
@@ -108,15 +109,15 @@
             <div class="carousel" id="depo-carousel">
                 <div class="slide active">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/PACIENTE-H-2990-ANTES-E-DEPOIS-1-1-scaled-1.webp" alt="Paciente H. Lima">
-                    <div class="slide-caption">PACIENTE H. LIMA: +5.2cm (CONFIRMADO )</div>
+                    <div class="slide-caption">PACIENTE H. LIMA: +5.2cm (CONFIRMADO ✓)</div>
                 </div>
                 <div class="slide">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/02/daf6ef_d639bfc5b0a34189b18c48e3f54f2763_mv2-1.png" alt="Paciente A. Costa">
-                    <div class="slide-caption">PACIENTE A. COSTA: +6.1cm (CONFIRMADO )</div>
+                    <div class="slide-caption">PACIENTE A. COSTA: +6.1cm (CONFIRMADO ✓)</div>
                 </div>
                 <div class="slide">
                     <img src="https://metodotripe.shop/wp-content/uploads/2026/01/WhatsApp-Image-2024-12-18-at-15.11.46-rcl53qv1p0gr5s3fzr30gvvchnyybvpbhth13gqhj4.jpeg">
-                    <div class="slide-caption">PACIENTE J. GOMES: +4.7cm (CONFIRMADO )</div>
+                    <div class="slide-caption">PACIENTE J. GOMES: +4.7cm (CONFIRMADO ✓)</div>
                 </div>
             </div>
             <div id="analysis-box" style="margin-top: 25px;">
@@ -154,7 +155,7 @@
                 <div class="guarantee-text">
                     <p style="font-weight: 900; color: #fff;">MÉTODO TRIPE</p>
                     <p style="font-weight: 900; color: #22c55e;">30 DIAS DE GARANTIA</p>
-                    <p style="color: var(--muted );">+ BÔNUS EXCLUSIVOS INCLUSOS</p>
+                    <p style="color: var(--muted);">+ BÔNUS EXCLUSIVOS INCLUSOS</p>
                 </div>
             </div>
 
@@ -163,19 +164,12 @@
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getDatabase, ref, set, update, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyCrUYYLb_9p4QUq1JLqQUwWEx-GgWEoTxQ",
-            authDomain: "funil-tripe-v10.firebaseapp.com",
-            databaseURL: "https://funil-tripe-v10-default-rtdb.firebaseio.com",
-            projectId: "funil-tripe-v10",
-            storageBucket: "funil-tripe-v10.firebasestorage.app",
-            messagingSenderId: "872809369468",
-            appId: "1:872809369468:web:e372a48b9654739098def9"
-        };
+    <script>
+        // ========================================
+        // CONFIGURAÇÃO - MUDE APENAS ESTA LINHA
+        // ========================================
+        const CHECKOUT_URL = 'https://pay.wiapy.com/LJuEuullf4'; // ⬅️ COLE SEU LINK AQUI
+        // ========================================
 
         const QUESTIONS = [
             { id: 'idade', t: 'Qual sua faixa etária? (Fator de risco vascular )', o: ['18-25', '26-35', '36-45', '46-55', '55+'] },
@@ -195,93 +189,146 @@
             { id: 'prioridade', t: 'Resolver este problema é sua prioridade máxima?', o: ['Sim, urgente', 'Sim, mas posso esperar', 'Apenas curiosidade'] }
         ];
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const sid = 's_' + Date.now();
-        let step = 0, qIdx = 0, stepStartTime = 0, avgHesitation = 0, hesitationCount = 0;
+        let step = 0;
+        let qIdx = 0;
+        let answers = {};
+        let sessionId = 's_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
+        // Navegação entre telas
         window.next = () => {
-            if (step === 0) { step = 1; update(ref(db, 'sessions/'+sid), { status: 'vsl_clicked' }); startModalDelay(); }
-            else if (step === 1) { step = 2; update(ref(db, 'sessions/'+sid), { status: 'quiz_started' }); }
-            else if (step === 2) { if (qIdx < 14) { qIdx++; } else { step = 3; startProcessing(); } }
+            if (step === 0) {
+                step = 1;
+                startModalDelay();
+            } else if (step === 1) {
+                step = 2;
+            } else if (step === 2) {
+                if (qIdx < 14) {
+                    qIdx++;
+                } else {
+                    step = 3;
+                    startProcessing();
+                }
+            }
             render();
         };
 
+        // Selecionar resposta do quiz
         window.sel = (id, val) => {
-            const hesitation = Date.now() - stepStartTime;
-            avgHesitation = (avgHesitation * hesitationCount + hesitation) / (hesitationCount + 1);
-            hesitationCount++;
-            update(ref(db, 'sessions/'+sid), { [id]: val, currentStep: qIdx + 1, avgHesitation: avgHesitation });
+            answers[id] = val;
+            console.log('Resposta registrada:', id, '=', val);
             window.next();
         };
 
-        window.finish = () => { 
-            update(ref(db, 'sessions/'+sid), { status: 'checkout_clicked' }); 
-            window.location.href = `https://pay.wiapy.com/LJuEuullf4`; 
+        // Finalizar e redirecionar para checkout
+        window.finish = () => {
+            // Criar URL com parâmetros de rastreamento
+            const params = new URLSearchParams({
+                sid: sessionId,
+                src: 'quiz',
+                ts: Date.now()
+            });
+            
+            const finalUrl = CHECKOUT_URL + (CHECKOUT_URL.includes('?') ? '&' : '?') + params.toString();
+            
+            console.log('Redirecionando para:', finalUrl);
+            console.log('Respostas do quiz:', answers);
+            
+            window.location.href = finalUrl;
         };
 
-        function render( ) {
+        // Renderizar telas
+        function render() {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('s-' + step).classList.add('active');
+            
             if (step === 2) {
                 const q = QUESTIONS[qIdx];
                 document.getElementById('q-num').textContent = qIdx + 1;
-                document.getElementById('p-fill').style.width = ((qIdx+1)/15*100) + '%';
-                document.getElementById('q-box').innerHTML = `<div style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">${q.t}</div><div class="options-grid">${q.o.map((o, i) => `<button class="option-btn" onclick="sel('${q.id}', ${i})">${o}</button>`).join('')}</div>`;
-                stepStartTime = Date.now();
+                document.getElementById('p-fill').style.width = ((qIdx + 1) / 15 * 100) + '%';
+                document.getElementById('q-box').innerHTML = `
+                    <div style="font-size: 22px; font-weight: 900; margin-bottom: 15px;">${q.t}</div>
+                    <div class="options-grid">
+                        ${q.o.map((o, i) => `<button class="option-btn" onclick="sel('${q.id}', ${i})">${o}</button>`).join('')}
+                    </div>
+                `;
             }
         }
 
+        // Delay modal com carrossel
         function startModalDelay() {
-            let sIdx = 0; const slides = document.querySelectorAll('#authority-carousel .slide');
-            const interval = setInterval(() => { slides.forEach(s => s.classList.remove('active')); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 2000);
-            setTimeout(() => { clearInterval(interval); document.getElementById('loading-text').textContent = "Avaliação carregada!"; document.getElementById('start-quiz-btn').disabled = false; }, 5000);
+            let sIdx = 0;
+            const slides = document.querySelectorAll('#authority-carousel .slide');
+            const interval = setInterval(() => {
+                slides.forEach(s => s.classList.remove('active'));
+                sIdx = (sIdx + 1) % slides.length;
+                slides[sIdx].classList.add('active');
+            }, 2000);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                document.getElementById('loading-text').textContent = "Avaliação carregada!";
+                document.getElementById('start-quiz-btn').disabled = false;
+            }, 5000);
         }
 
+        // Processamento de resultados
         function startProcessing() {
-            let sIdx = 0; const slides = document.querySelectorAll('#depo-carousel .slide');
-            const interval = setInterval(() => { slides.forEach(s => s.classList.remove('active')); sIdx = (sIdx + 1) % slides.length; slides[sIdx].classList.add('active'); }, 2000);
-            
-            setTimeout(() => { 
-                document.getElementById('pb-1').style.width = '100%'; document.getElementById('pb-1').classList.add('complete');
-                document.getElementById('st-1').innerText = 'VALIDADO'; document.getElementById('st-1').classList.add('complete');
+            let sIdx = 0;
+            const slides = document.querySelectorAll('#depo-carousel .slide');
+            const interval = setInterval(() => {
+                slides.forEach(s => s.classList.remove('active'));
+                sIdx = (sIdx + 1) % slides.length;
+                slides[sIdx].classList.add('active');
+            }, 2000);
+
+            setTimeout(() => {
+                document.getElementById('pb-1').style.width = '100%';
+                document.getElementById('pb-1').classList.add('complete');
+                document.getElementById('st-1').innerText = 'VALIDADO ✓';
+                document.getElementById('st-1').classList.add('complete');
                 document.getElementById('st-2').innerText = 'PROCESSANDO';
             }, 2500);
 
-            setTimeout(() => { 
-                document.getElementById('pb-2').style.width = '100%'; document.getElementById('pb-2').classList.add('complete');
-                document.getElementById('st-2').innerText = 'VALIDADO'; document.getElementById('st-2').classList.add('complete');
+            setTimeout(() => {
+                document.getElementById('pb-2').style.width = '100%';
+                document.getElementById('pb-2').classList.add('complete');
+                document.getElementById('st-2').innerText = 'VALIDADO ✓';
+                document.getElementById('st-2').classList.add('complete');
                 document.getElementById('st-3').innerText = 'PROCESSANDO';
             }, 5000);
 
-            setTimeout(() => { 
-                document.getElementById('pb-3').style.width = '100%'; document.getElementById('pb-3').classList.add('complete');
-                document.getElementById('st-3').innerText = 'COMPATÍVEL'; document.getElementById('st-3').classList.add('complete');
+            setTimeout(() => {
+                document.getElementById('pb-3').style.width = '100%';
+                document.getElementById('pb-3').classList.add('complete');
+                document.getElementById('st-3').innerText = 'COMPATÍVEL ✓';
+                document.getElementById('st-3').classList.add('complete');
             }, 7500);
 
-            setTimeout(() => { clearInterval(interval); step = 4; render(); }, 9000);
+            setTimeout(() => {
+                clearInterval(interval);
+                step = 4;
+                render();
+            }, 9000);
         }
 
+        // Contador de pessoas online (variação aleatória)
         setInterval(() => {
             const el = document.getElementById('online-count-val');
-            if(el) {
+            if (el) {
                 const current = parseInt(el.innerText);
-                const change = Math.floor(Math.random() * 6) - 2; 
+                const change = Math.floor(Math.random() * 6) - 2;
                 el.innerText = Math.max(135, Math.min(172, current + change));
             }
         }, 3500);
 
-        function init() { render(); set(ref(db, 'sessions/'+sid), { enteredAt: serverTimestamp(), status: 'vsl_viewed', currentStep: 0 }); }
-        init();
-
-        // Controle de vídeo fixo e scroll
+        // Controle de vídeo fixo no scroll
         let videoFixed = false;
         window.addEventListener('scroll', () => {
             if (step !== 0) return;
             const videoContainer = document.getElementById('video-container');
             const placeholder = document.querySelector('.video-placeholder');
             const rect = videoContainer.getBoundingClientRect();
-            
+
             if (rect.top <= 0 && !videoFixed) {
                 videoFixed = true;
                 videoContainer.classList.add('sticky');
@@ -292,6 +339,14 @@
                 placeholder.classList.remove('show');
             }
         });
+
+        // Inicialização
+        function init() {
+            render();
+            console.log('Quiz iniciado - Session ID:', sessionId);
+        }
+
+        init();
     </script>
 </body>
 </html>
