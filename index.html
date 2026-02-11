@@ -191,8 +191,6 @@
 
         let step = 0;
         let qIdx = 0;
-        let answers = {};
-        let sessionId = 's_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
         // Navegação entre telas
         window.next = () => {
@@ -214,26 +212,12 @@
 
         // Selecionar resposta do quiz
         window.sel = (id, val) => {
-            answers[id] = val;
-            console.log('Resposta registrada:', id, '=', val);
             window.next();
         };
 
         // Finalizar e redirecionar para checkout
         window.finish = () => {
-            // Criar URL com parâmetros de rastreamento
-            const params = new URLSearchParams({
-                sid: sessionId,
-                src: 'quiz',
-                ts: Date.now()
-            });
-            
-            const finalUrl = CHECKOUT_URL + (CHECKOUT_URL.includes('?') ? '&' : '?') + params.toString();
-            
-            console.log('Redirecionando para:', finalUrl);
-            console.log('Respostas do quiz:', answers);
-            
-            window.location.href = finalUrl;
+            window.location.href = CHECKOUT_URL;
         };
 
         // Renderizar telas
@@ -343,7 +327,6 @@
         // Inicialização
         function init() {
             render();
-            console.log('Quiz iniciado - Session ID:', sessionId);
         }
 
         init();
